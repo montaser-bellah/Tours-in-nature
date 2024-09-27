@@ -1,0 +1,105 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment JS </title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 62.5%;
+    }
+
+    .btn-background {
+      display: inline-block;
+      padding: 1.2rem 2rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      border-radius: .5rem;
+      border: none;
+      outline: none;
+      box-shadow: 0 1.6rem 2.4rem rgba(0, 0, 0, .15);
+
+      background-color: #fff;
+
+
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+
+
+
+
+
+    }
+
+    button span {
+      background-image: linear-gradient(to right bottom,
+          rgba(126, 213, 111, 0.8),
+          rgba(40, 180, 133, 0.8));
+
+      color: transparent;
+      background-clip: text;
+      transition: all .6s;
+      /* animation-fill-mode: forwards; */
+    }
+
+    .btn-background:hover span  {
+      background-image: linear-gradient(to right bottom,
+          rgba(126, 213, 111, 1),
+          rgba(40, 180, 133, 1.1));
+    }
+    .btn-background:hover {
+      scale: 1.2;
+    }
+
+    body {
+      max-width: 114rem;
+      margin: 20rem auto;
+      padding: 0 3.2rem;
+      font-family: sans-serif;
+      font-size: 3rem ;
+
+      background-image: linear-gradient(to right bottom,
+          rgba(126, 213, 111, 0.8),
+          rgba(40, 180, 133, 0.8));
+
+          color: #334; 
+    }
+
+    .result {
+      padding: 2.4rem 0;
+      margin-bottom: -13rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box1">
+    <button class="btn-background">
+      <span>
+        change background
+      </span>
+    </button>
+
+  </div>
+
+
+  <div class="result">
+
+  </div>
+
+
+  <script src="../js/script2.js"></script>
+</body>
+
+</html>
