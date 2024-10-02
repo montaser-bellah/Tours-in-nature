@@ -65,6 +65,33 @@ const observerCallback = function (entries) {
 const headerObserver = new IntersectionObserver(observerCallback, options);
 headerObserver.observe(header);
 
+
+
+// Implementing the  smoothly scrolling:
+// using Event Delegation: "is the right way 😉"
+
+//selecting the parent element of links "ul.links" ;
+const links = document.querySelector(".links");
+
+//adding the Event handler to parent's element : 
+links.addEventListener("click", function(event) {
+  event.preventDefault();
+
+// check if the  click on the Right Element  or No:
+  if(event.target.classList.contains("link")) {
+
+    //getting id of the section:
+    const id = event.target.getAttribute("href");
+    
+    //getting section using id selector:>
+    const section = document.querySelector(id);
+
+    //transforming to the right section:
+    section.scrollIntoView({behavior: "smooth"});
+
+  }
+})
+
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 const createPopup = function () {
@@ -141,3 +168,8 @@ form.addEventListener("submit", function (event) {
   if (!email.value || !Array.from(email.value).includes("@"))
     alert("Please Enter a valid Email!");
 });
+
+
+
+
+
