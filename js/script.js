@@ -65,36 +65,36 @@ const observerCallback = function (entries) {
 const headerObserver = new IntersectionObserver(observerCallback, options);
 headerObserver.observe(header);
 
-
-
 // Implementing the  smoothly scrolling:
 // using Event Delegation: "is the right way 😉"
 
 //selecting the parent element of links "ul.links" ;
 const links = document.querySelector(".links");
 
-//adding the Event handler to parent's element : 
-links.addEventListener("click", function(event) {
+//adding the Event handler to parent's element :
+links.addEventListener("click", function (event) {
   event.preventDefault();
 
-// check if the  click on the Right Element  or No:
-  if(event.target.classList.contains("link")) {
-
+  // check if the  click on the Right Element  or No:
+  if (event.target.classList.contains("link")) {
     //getting id of the section:
     const id = event.target.getAttribute("href");
-    
+
     //getting section using id selector:>
     const section = document.querySelector(id);
 
     //transforming to the right section:
-    section.scrollIntoView({behavior: "smooth"});
-
+    section.scrollIntoView({ behavior: "smooth" });
   }
-})
+});
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-const createPopup = function () {
+const createPopup = function (
+  message = `Welcome in my Website "nature tours"`,
+  link = "#",
+  linkName = "ok"
+) {
   const markup = `
   <div class="popup hidden ">
     <button class="btn-close">&Cross;</button>
@@ -105,13 +105,15 @@ const createPopup = function () {
   
       <span class="title">Nature Tours</span>
     </div>
-      <p class="description"> Welcome in my Website "nature tours" </p>
+      <p class="description"> ${message} </p>
        
-          <button class="ok">
-              OK  
-          </button>
+      <p>
+       <a href="${link}" class="ok">
+              ${linkName}  
+          </a>
+      </p>
+         
   </div>
-  
   `;
 
   const main = document.querySelector(".main");
@@ -120,29 +122,49 @@ const createPopup = function () {
 
 //call the createPopup():
 createPopup();
+createPopup(
+  "أرجو ملاحظة أنني قمت بإضافة فيديو في قسم القصص",
+  "#section-stories",
+  "go to Stories"
+);
 
 //Selecting the popup & popup contents :>
-
-const popup = document.querySelector(".popup");
-const btnClose = document.querySelector(".btn-close");
-const btnOk = document.querySelector(".ok");
-const popupDescription = document.querySelector(".description");
+const popups = document.querySelectorAll(".popup");
 
 ////////////////////////////////////
 // 1) alert welcome message the HTML Loaded :
 //-1st WAY :
 window.addEventListener("DOMContentLoaded", function () {
-  popup.classList.remove("hidden");
+  // showing popup when page loading:
+  showPopup();
 });
 
 //-2nd WAY:
-this.addEventListener("load", () => popup.classList.remove("hidden"));
-// Close the popup window :
-btnClose.addEventListener("click", function () {
-  popup.classList.add("hidden");
-});
+// this.addEventListener("load",showPopup );
 
-btnOk.addEventListener("click", () => popup.classList.add("hidden"));
+// POPUP Functionality :>
+//using event delegation:>
+function popupFun(popElement) {
+  popElement.classList.remove("hidden");
+
+  popElement.addEventListener("click", function (event) {
+    console.log(event.target);
+
+    if (
+      event.target.classList.contains("btn-close") ||
+      event.target.classList.contains("ok")
+    )
+      this.classList.add("hidden");
+  });
+}
+//Showing teh POPUP:-
+function showPopup() {
+  //1st WAY:>
+  // popups.forEach( p => popupFun(p));
+
+  //2nd WAY:>
+  popups.forEach(popupFun);
+}
 
 //////////////////////////
 
@@ -168,8 +190,3 @@ form.addEventListener("submit", function (event) {
   if (!email.value || !Array.from(email.value).includes("@"))
     alert("Please Enter a valid Email!");
 });
-
-
-
-
-

@@ -1,0 +1,134 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox </title>
+
+  <style>
+    *,
+    *::after,
+    *::before {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 62.5%;
+    }
+
+    /* .container {
+      max-width: 50rem ;
+      margin: 0 auto ;
+      padding: 6rem 0 ;
+      font-size: 1.8rem ;
+    } */
+
+    body {
+      font-family: sans-serif;
+    }
+
+    .checkbox-container {
+      display: table-cell;
+      width: 100%;
+      height: 100%;
+      vertical-align: middle;
+      text-align: center;
+
+    }
+
+    label {
+      position: relative;
+      display: inline-block;
+      color: #333;
+      cursor: pointer;
+
+    }
+
+    span {
+      position: relative;
+      display: inline-block;
+      width: 2.5rem;
+      height: 2.5rem;
+      transform-origin: center;
+      border: 2px solid #333;
+      border-radius: 50%;
+      vertical-align: middle;
+      margin-right: 1rem;
+      background-color: transparent;
+      transition: background-color 150ms .2s, transform .35s cubic-bezier(.78, -1.22, 0.17, 1.89);
+    }
+
+    input:checked+label span {
+      border-color: #38d35a;
+    }
+
+    span::before {
+      content: "";
+      position: absolute;
+      top: 1.3rem;
+      left: 9px;
+      width: 0;
+      height: 2px;
+      border-radius: 2px;
+      background-color: #38d35a;
+      transform: rotate(45deg);
+      transform-origin: 0 0;
+      transition: width 50ms ease 50ms;
+    }
+
+    span::after {
+      content: "";
+      position: absolute;
+      top: 1.6rem;
+      left: 1rem;
+      height: 2px;
+      border-radius: 2px;
+      background-color: #38d35a;
+      transform: rotate(305deg);
+      transform-origin: 0% 0%;
+      transition: width 50ms ease;
+    }
+
+    label:hover span::before {
+      width: 5px;
+      transition: width 100ms ease;
+    }
+  </style>
+</head>
+
+<body>
+
+
+  <div>
+    <p p>Lorem ipsum dolor sit.</p>
+    <button popupOver >popup me</button>
+  </div>
+
+
+  <script>
+    var form = document.getElementsByClassName("form");
+    var email = document.getElementById("email").value;
+
+
+
+    var emailValidation = function (event) {
+      if (email === "" || email === " ") {
+        alert("Please enter a valid email");
+        return false;
+      }
+      // else statement isn't necessary because we using  return statement ; 
+        return true;
+
+
+
+    }
+
+    form.onsubmit = emailValidation();
+
+  </script>
+
+</body>
+
+</html>
