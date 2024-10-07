@@ -123,7 +123,7 @@ const createPopup = function (
 //call the createPopup():
 createPopup();
 createPopup(
-  "أرجو ملاحظة أنني قمت بإضافة فيديو في قسم القصص",
+  "أرجو ملاحظة أنني قمت بإضافة فيديو كخلفية لقسم القصص",
   "#section-stories",
   "go to Stories"
 );
